@@ -1,72 +1,134 @@
-<<<<<<< HEAD
 import GlassPanel from "@/components/GlassPanel";
 import Candle from "@/components/Candle";
 import VoidBox from "@/components/VoidBox";
 import Guestbook from "@/components/Guestbook";
 import Footer from "@/components/Footer";
+import FloatingParticles from "@/components/FloatingParticles";
+import CursorTrail from "@/components/CursorTrail";
+import SoundToggle from "@/components/SoundToggle";
+import TextControls from "@/components/TextControls";
+import VisitorCounter from "@/components/VisitorCounter";
+import BreathingGuide from "@/components/BreathingGuide";
+import MoonPhase from "@/components/MoonPhase";
+import DailyIntention from "@/components/DailyIntention";
+import WishLantern from "@/components/WishLantern";
+import CandleWall from "@/components/CandleWall";
+import GratitudeJar from "@/components/GratitudeJar";
+import TimeGreeting from "@/components/TimeGreeting";
+import RippleBackground from "@/components/RippleBackground";
+import DarkRoomFire from "@/components/DarkRoomFire";
+import GlassBirdRoom from "@/components/GlassBirdRoom";
+import AuroraRoom from "@/components/AuroraRoom";
+import RoomToggle from "@/components/RoomToggle";
+import EntranceVeil from "@/components/EntranceVeil";
+import SacredGeometry from "@/components/SacredGeometry";
+import HeartbeatPulse from "@/components/HeartbeatPulse";
+import LivingTitle from "@/components/LivingTitle";
+import LivePresence from "@/components/LivePresence";
+import SilenceMode from "@/components/SilenceMode";
+import PrayerBell from "@/components/PrayerBell";
+import GriefCorner from "@/components/GriefCorner";
+import AltarWhisper from "@/components/AltarWhisper";
+import SacredHours from "@/components/SacredHours";
+import AnsweredPrayers from "@/components/AnsweredPrayers";
+import PersonalisedSky from "@/components/PersonalisedSky";
+import SoundscapeBuilder from "@/components/SoundscapeBuilder";
+import FrequencyHealing from "@/components/FrequencyHealing";
+import LetterToFuture from "@/components/LetterToFuture";
+import ReturnVisitor from "@/components/ReturnVisitor";
+import CollectiveIntention from "@/components/CollectiveIntention";
+import CandleVigil from "@/components/CandleVigil";
+import MemoryCapsule from "@/components/MemoryCapsule";
+import SacredTextRain from "@/components/SacredTextRain";
+import ChoirOfVoices from "@/components/ChoirOfVoices";
+import HealingJournal from "@/components/HealingJournal";
+import AccessibilityMode from "@/components/AccessibilityMode";
+import SacredPortal from "@/components/SacredPortal";
+import CreateAltarRoom from "@/components/CreateAltarRoom";
 
-// ─── Ambient background blobs (pure CSS, no JS) ───────────────────────────────
 function AmbientOrbs() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden>
-      {/* top-left warm */}
-      <div
-        className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, #fde68a, #fca5a5, transparent 70%)" }}
-      />
-      {/* top-right cool */}
-      <div
-        className="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full opacity-35 blur-3xl"
-        style={{ background: "radial-gradient(circle, #c4b5fd, #93c5fd, transparent 70%)" }}
-      />
-      {/* bottom center */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, #a5f3fc, #d9f99d, transparent 70%)" }}
-      />
+      <div className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl"
+        style={{ background: "radial-gradient(circle, #fde68a, #fca5a5, transparent 70%)" }} />
+      <div className="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full opacity-35 blur-3xl"
+        style={{ background: "radial-gradient(circle, #c4b5fd, #93c5fd, transparent 70%)" }} />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-30 blur-3xl"
+        style={{ background: "radial-gradient(circle, #a5f3fc, #d9f99d, transparent 70%)" }} />
     </div>
   );
 }
 
-// ─── Section label ─────────────────────────────────────────────────────────────
-function SectionDivider({ label }: { label: string }) {
+function Divider({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-4 w-full max-w-xl mx-auto px-4">
+    <div className="flex items-center gap-4 w-full">
       <div className="flex-1 h-px bg-white/30" />
-      <span className="text-[10px] tracking-[0.25em] uppercase text-stone-400">{label}</span>
+      <span className="text-[10px] tracking-[0.3em] uppercase text-stone-400 shrink-0">{label}</span>
       <div className="flex-1 h-px bg-white/30" />
     </div>
   );
 }
 
-// ─── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   return (
     <>
+      <EntranceVeil />
+      <SacredHours />
+      <ReturnVisitor />
+      <PersonalisedSky />
       <AmbientOrbs />
+      <SacredGeometry />
+      <SacredTextRain />
+      <FloatingParticles />
+      <CursorTrail />
+      <RippleBackground />
+      <GlassBirdRoom />
+      <AuroraRoom />
+      <SoundToggle />
+      <TextControls />
+      <RoomToggle />
+      <SilenceMode />
+      <AccessibilityMode />
+      <AltarWhisper />
 
-      <main className="flex flex-col items-center gap-10 px-4 py-16 max-w-xl mx-auto w-full">
+      <main className="flex flex-col items-center gap-12 px-4 py-16 max-w-xl mx-auto w-full">
 
-        {/* ── Hero ── */}
-        <div className="text-center pt-4">
-          <p className="text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-3">
-            Welcome
-          </p>
-          <h1 className="text-4xl font-semibold text-stone-700 tracking-tight leading-tight">
-            Digital Altar
+        <DarkRoomFire />
+        <CandleVigil />
+
+        <HeartbeatPulse className="text-center flex flex-col gap-3 pt-4">
+          <p className="text-[11px] tracking-[0.4em] uppercase text-stone-400">Welcome</p>
+          <h1 className="text-5xl font-light text-stone-700 tracking-tight leading-tight">
+            <LivingTitle text="Digital Altar" />
           </h1>
-          <p className="mt-3 text-stone-500 text-sm leading-relaxed max-w-xs mx-auto">
-            A quiet space to light a candle, release what weighs on you,
-            and leave a word for those who come after.
-          </p>
-        </div>
+          <TimeGreeting />
+          <LivePresence />
+          <ChoirOfVoices />
+        </HeartbeatPulse>
 
-        {/* ── Candles ── */}
-        <SectionDivider label="Light a Candle" />
+        <SacredPortal />
 
         <GlassPanel className="w-full">
+          <div className="flex flex-col gap-6">
+            <DailyIntention />
+            <div className="h-px bg-white/20" />
+            <MoonPhase />
+          </div>
+        </GlassPanel>
+
+        <GlassPanel className="w-full">
+          <VisitorCounter />
+        </GlassPanel>
+
+        <Divider label="Collective Intention" />
+        <GlassPanel className="w-full">
+          <CollectiveIntention />
+        </GlassPanel>
+
+        <Divider label="Light a Candle" />
+        <GlassPanel className="w-full candle-section">
           <p className="text-center text-xs text-stone-400 tracking-widest uppercase mb-6">
-            Click to light · Prism to colour
+            Click to light · Prism to colour · Tap to dedicate
           </p>
           <div className="flex items-end justify-center gap-10">
             <Candle id="candle-1" />
@@ -78,88 +140,81 @@ export default function Home() {
           </p>
         </GlassPanel>
 
-        {/* ── Void ── */}
-        <SectionDivider label="The Void" />
+        <GlassPanel className="w-full">
+          <CandleWall />
+        </GlassPanel>
 
+        <Divider label="Prayer Bell" />
+        <GlassPanel className="w-full">
+          <PrayerBell />
+        </GlassPanel>
+
+        <Divider label="Wish Lanterns" />
+        <GlassPanel className="w-full">
+          <WishLantern />
+        </GlassPanel>
+
+        <Divider label="Soundscape" />
+        <GlassPanel className="w-full">
+          <SoundscapeBuilder />
+        </GlassPanel>
+
+        <Divider label="Frequency Healing" />
+        <GlassPanel className="w-full">
+          <FrequencyHealing />
+        </GlassPanel>
+
+        <Divider label="Breathe" />
+        <GlassPanel className="w-full">
+          <BreathingGuide />
+        </GlassPanel>
+
+        <Divider label="The Void" />
         <GlassPanel className="w-full">
           <VoidBox />
         </GlassPanel>
 
-        {/* ── Guestbook ── */}
-        <SectionDivider label="Guestbook" />
+        <Divider label="Healing Journal" />
+        <GlassPanel className="w-full">
+          <HealingJournal />
+        </GlassPanel>
 
+        <Divider label="Letter to the Future" />
+        <GlassPanel className="w-full">
+          <LetterToFuture />
+        </GlassPanel>
+
+        <Divider label="Gratitude" />
+        <GlassPanel className="w-full">
+          <GratitudeJar />
+        </GlassPanel>
+
+        <Divider label="Grief" />
+        <GriefCorner />
+
+        <Divider label="Memory Capsule" />
+        <GlassPanel className="w-full">
+          <MemoryCapsule />
+        </GlassPanel>
+
+        <Divider label="How is your heart?" />
         <GlassPanel className="w-full">
           <Guestbook />
+        </GlassPanel>
+
+        <Divider label="Prayer Chain" />
+        <GlassPanel className="w-full">
+          <AnsweredPrayers />
+        </GlassPanel>
+
+        <Divider label="Personal Altar Rooms" />
+        <GlassPanel className="w-full">
+          <CreateAltarRoom />
         </GlassPanel>
 
       </main>
 
       <Footer />
     </>
-=======
-import Image from "next/image";
-
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
->>>>>>> a9c1eea (Initial commit from Create Next App)
   );
 }
