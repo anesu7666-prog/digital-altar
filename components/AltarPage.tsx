@@ -76,15 +76,18 @@ function Divider({ label }: { label: string }) {
 
 export default function AltarPage() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return (
-    <div className="min-h-screen flex items-center justify-center" style={{background:'#F0F0F2'}}>
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-8 h-8 rounded-full border-2 border-stone-300 border-t-stone-600 animate-spin" />
-        <p className="text-xs text-stone-400 tracking-widest uppercase">Loading altar…</p>
+  useEffect(() => { setMounted(true); }, []);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "#F0F0F2" }}>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 rounded-full border-2 border-stone-300 border-t-stone-600 animate-spin" />
+          <p className="text-xs text-stone-400 tracking-widest uppercase">Loading altar…</p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   return (
     <>
