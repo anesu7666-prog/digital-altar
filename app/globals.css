@@ -25,6 +25,23 @@ h1 { letter-spacing: -0.02em; line-height: 1.15; }
 h2 { letter-spacing: 0.01em; }
 p  { line-height: 1.75; }
 
+/* Performance hints */
+canvas { will-change: transform; }
+.glass-panel { contain: layout style; }
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* GPU acceleration for fixed elements */
+.fixed { transform: translateZ(0); backface-visibility: hidden; }
+
+/* Content visibility for off-screen sections */
+.lazy-section { content-visibility: auto; contain-intrinsic-size: 0 400px; }
+
+/* Content visibility for off-screen sections */
+.lazy-section { content-visibility: auto; contain-intrinsic-size: 0 400px; }
+
 button, input, textarea, a {
   transition: background 0.4s ease, border-color 0.4s ease,
               color 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;

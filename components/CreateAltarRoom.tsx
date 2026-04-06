@@ -18,7 +18,8 @@ export default function CreateAltarRoom(){
     setCreating(true);
     const slug=`${toSlug(trimName)}-${Date.now().toString(36)}`;
     await supabase.from("altar_rooms").insert({slug,name:trimName,description:description.trim()});
-    setUrl(`${window.location.origin}/altar/${slug}`);setCreating(false);
+    const base = "https://digital-altar-tau.vercel.app";
+    setUrl(`${base}/altar/${slug}`); setCreating(false);
   }
 
   function copy(){if(!url)return;navigator.clipboard.writeText(url);setCopied(true);setTimeout(()=>setCopied(false),2500);}

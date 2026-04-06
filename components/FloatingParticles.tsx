@@ -1,19 +1,9 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 
 interface Ember {
   x: number; y: number; size: number; speed: number;
-  drift: number; alpha: number; hue: number;
-}
-
-function randomEmber(W: number, H: number): Ember {
-  return {
-    x: Math.random() * W, y: H + Math.random() * 100,
-    size: Math.random() * 3 + 1, speed: Math.random() * 0.6 + 0.2,
-    drift: (Math.random() - 0.5) * 0.4, alpha: Math.random() * 0.5 + 0.1,
-    hue: Math.random() * 40 + 20,
-  };
+  drift: number; alpha: number; alphaDir: number; hue: number;
 }
 
 export default function FloatingParticles() {
@@ -21,32 +11,65 @@ export default function FloatingParticles() {
 
   useEffect(() => {
     const canvas = canvasRef.current!;
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext("2d", { alpha: true })!;
     let W = window.innerWidth, H = window.innerHeight;
     canvas.width = W; canvas.height = H;
 
-    function resize() { W = window.innerWidth; H = window.innerHeight; canvas.width = W; canvas.height = H; }
-    window.addEventListener("resize", resize);
+    // Pre-compute all random values
+    const COUNT = Math.min(25, Math.floor(W / 50));
+    const embers: Ember[] = Array.from({ length: COUNT }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      size: Math.random() * 2.5 + 0.8,
+      speed: Math.random() * 0.5 + 0.15,
+      drift: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.4 + 0.05,
+      alphaDir: Math.random() > 0.5 ? 1 : -1,
+      hue: Math.random() * 40 + 20,
+    }));
 
-    const embers: Ember[] = Array.from({ length: Math.min(60, Math.floor(W / 20)) }, () => {
-      const e = randomEmber(W, H); e.y = Math.random() * H; return e;
-    });
+    // Debounced resize
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    function resize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W; canvas.height = H;
+      }, 150);
+    }
+    window.addEventListener("resize", resize, { passive: true });
 
+    // 30fps throttle
     let raf: number;
-    function tick() {
+    let last = 0;
+    const FPS = 30;
+    const INTERVAL = 1000 / FPS;
+
+    function tick(now: number) {
+      raf = requestAnimationFrame(tick);
+      if (now - last < INTERVAL) return;
+      last = now;
+
       ctx.clearRect(0, 0, W, H);
       for (const e of embers) {
-        e.y -= e.speed; e.x += e.drift;
-        e.alpha += (Math.random() - 0.5) * 0.02;
-        e.alpha = Math.max(0.05, Math.min(0.55, e.alpha));
-        if (e.y < -10) Object.assign(e, randomEmber(W, H));
-        ctx.beginPath(); ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${e.hue}, 90%, 70%, ${e.alpha})`; ctx.fill();
+        e.y -= e.speed;
+        e.x += e.drift;
+        e.alpha += e.alphaDir * 0.008;
+        if (e.alpha > 0.5 || e.alpha < 0.05) e.alphaDir *= -1;
+        if (e.y < -10) { e.y = H + 10; e.x = Math.random() * W; }
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${e.hue},90%,70%,${e.alpha})`;
+        ctx.fill();
       }
-      raf = requestAnimationFrame(tick);
     }
-    tick();
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(raf);
+      clearTimeout(resizeTimer);
+    };
   }, []);
 
   return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none -z-10" aria-hidden />;

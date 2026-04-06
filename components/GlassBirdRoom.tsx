@@ -63,7 +63,7 @@ export default function GlassBirdRoom() {
     const canvas = canvasRef.current!; const ctx = canvas.getContext("2d")!;
     let W = window.innerWidth, H = window.innerHeight;
     canvas.width = W; canvas.height = H;
-    const birds: Bird[] = Array.from({ length: 42 }, () => createBird(W, H));
+    const birds: Bird[] = Array.from({ length: 28 }, () => createBird(W, H));
     let t = 0;
     function resize() { W=window.innerWidth;H=window.innerHeight;canvas.width=W;canvas.height=H; }
     window.addEventListener("resize", resize);

@@ -32,12 +32,12 @@ export default function SacredGeometry() {
     }
 
     function tick() {
-      ctx.clearRect(0, 0, W, H); angle += 0.0008; breathe += 0.012;
+      ctx.clearRect(0, 0, W, H); angle += 0.0004; breathe += 0.006;
       const pulse = 1 + Math.sin(breathe) * 0.04;
       const cx = W / 2, cy = H / 2, baseR = Math.min(W, H) * 0.12 * pulse;
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(angle); ctx.translate(-cx, -cy);
-      drawFlowerOfLife(cx, cy, baseR, 0.12); drawFlowerOfLife(cx, cy, baseR * 0.5, 0.08);
-      ctx.strokeStyle = `${colors[room] ?? colors.light}0.06)`; ctx.lineWidth = 0.5;
+      drawFlowerOfLife(cx, cy, baseR, 0.08); drawFlowerOfLife(cx, cy, baseR * 0.5, 0.05);
+      ctx.strokeStyle = `${colors[room] ?? colors.light}0.04)`; ctx.lineWidth = 0.5;
       ctx.beginPath(); ctx.arc(cx, cy, baseR * 2.6, 0, Math.PI * 2); ctx.stroke();
       ctx.restore();
       raf = requestAnimationFrame(tick);
